@@ -1,3 +1,4 @@
+set nocp
 set number
 set expandtab
 set tabstop=8
@@ -5,6 +6,9 @@ set softtabstop=2
 set shiftwidth=2
 set mouse=a
 set autoread
+set hidden
+
+filetype plugin on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
@@ -27,16 +31,14 @@ try
 catch
 endtry
 
-let mapleader = ","
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 
 "Always show current position
 set ruler
 
 " Height of the command bar
 set cmdheight=8
-
-" A buffer becomes hidden when it is abandoned
-set hid
 
 " Ignore case when searching
 set ignorecase
@@ -66,24 +68,21 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " Always show the status line
 set laststatus=2
 
 " Map inserting newline to K
 map K i<Enter><Esc>
+map <leader>d :e %:p:h<cr>
+
+" Allows find to search recursively
+set path+=**
+set wildmenu
+" Ignore certain paths that we don't want to search
+set wildignore+=**/node_modules/**,**/vendor/**
 
 source ~/.config/nvim/plugins_config.vim
 
@@ -93,9 +92,9 @@ Plug 'guns/vim-sexp',    {'for': 'clojure'}
 Plug 'janko/vim-test'
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
 Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
-Plug 'Yggdroot/LeaderF'
+" Plug 'Yggdroot/LeaderF'
 call plug#end()

@@ -1,15 +1,13 @@
-"""""""""""""""""
-" NERDTree config
-"""""""""""""""""
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let g:NERDTreeWinSize=45
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
-
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"""""""""""""""""
+" netrw
+"""""""""""""""""
+let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_winsize = 20
+let g:netrw_preview = 1
 
 """""""""""""""""
 " vim-iced
@@ -39,10 +37,3 @@ let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
 " Only run linting when saving the file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-
-"""""""""""""""""
-" Leaderf
-"""""""""""""""""
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
