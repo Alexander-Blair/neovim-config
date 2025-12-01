@@ -26,10 +26,10 @@ elseif has("unix")
     set gfn=Monospace\ 11
 endif
 
-try
-  colorscheme gruvbox
-catch
-endtry
+" try
+"   colorscheme gruvbox
+" catch
+" endtry
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -88,13 +88,10 @@ source ~/.config/nvim/plugins_config.vim
 
 call plug#begin()
 Plug 'dense-analysis/ale'
-Plug 'guns/vim-sexp',    {'for': 'clojure'}
-Plug 'janko/vim-test'
-Plug 'liquidz/vim-iced', {'for': 'clojure'}
 Plug 'mileszs/ack.vim'
-" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
-" Plug 'Yggdroot/LeaderF'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
+
+colorscheme catppuccin-latte
