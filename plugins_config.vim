@@ -10,15 +10,6 @@ let g:netrw_banner = 0
 let g:netrw_preview = 1
 
 """""""""""""""""
-" vim-test
-"""""""""""""""""
-let test#strategy = "neovim"
-map <leader>tf :TestFile<cr>
-map <leader>ts :TestSuite<cr>
-map <leader>tl :TestLast<cr>
-map <leader>tn :TestNearest<cr>
-
-"""""""""""""""""
 " Ale
 """""""""""""""""
 " Disabling highlighting

@@ -26,11 +26,6 @@ elseif has("unix")
     set gfn=Monospace\ 11
 endif
 
-" try
-"   colorscheme gruvbox
-" catch
-" endtry
-
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
@@ -90,16 +85,13 @@ set wildignore+=**/node_modules/**,**/vendor/**
 source ~/.config/nvim/plugins_config.vim
 
 call plug#begin()
+Plug 'github/copilot.vim'
+
+" Other dependencies
 Plug 'dense-analysis/ale'
 Plug 'mileszs/ack.vim'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
-
-lua << EOF
-require('gitsigns').setup({
-  current_line_blame = false, -- Toggle this if you want the 'Ghost Blame'
-})
-EOF
 
 set background=light
 colorscheme morning
