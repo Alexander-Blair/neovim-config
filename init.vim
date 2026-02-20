@@ -76,7 +76,10 @@ set laststatus=2
 
 " Map inserting newline to K
 map K i<Enter><Esc>
-map <leader>d :e %:p:h<cr>
+
+" Open file explorer in directory of the current file
+nnoremap - :Explore<cr>
+nnoremap <leader>- :Vexplore %:p:h <cr>
 
 " Allows find to search recursively
 set path+=**
@@ -89,9 +92,14 @@ source ~/.config/nvim/plugins_config.vim
 call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
-colorscheme catppuccin-latte
+lua << EOF
+require('gitsigns').setup({
+  current_line_blame = false, -- Toggle this if you want the 'Ghost Blame'
+})
+EOF
+
+set background=light
+colorscheme morning
