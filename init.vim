@@ -66,10 +66,18 @@ set wildmenu
 " Ignore certain paths that we don't want to search
 set wildignore+=**/node_modules/**,**/vendor/**
 
+set background=light
+colorscheme morning
+
 source ~/.config/nvim/plugins_config.vim
 
 call plug#begin()
+" Dependencies for codecompanion
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'github/copilot.vim'
+
+Plug 'olimorris/codecompanion.nvim'
 
 " Other dependencies
 Plug 'dense-analysis/ale'
@@ -77,5 +85,24 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
-set background=light
-colorscheme morning
+lua << EOF
+require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "copilot",
+    },
+    inline = {
+      adapter = "copilot",
+    },
+    agent = {
+      adapter = "copilot",
+    },
+  },
+  -- This enables the ghost-text style suggestions inside the chat
+  display = {
+    chat = {
+      show_settings = true,
+    },
+  },
+})
+EOF
